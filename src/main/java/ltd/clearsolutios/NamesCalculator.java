@@ -14,13 +14,18 @@ public class NamesCalculator {
     }
 
     public Integer calculate(String name) {
-        if (isNull(name)
-                || name.isBlank()
-                || name.isEmpty()) {
+        if (isNull(name) || name.isBlank() || name.isEmpty())
+        {
             return 0;
         }
 
         int count = 0;
+
+        for (String s : names) {
+            if (name.equalsIgnoreCase(s)) {
+                count++;
+            }
+        }
         return count;
     }
 }

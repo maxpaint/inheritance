@@ -35,4 +35,12 @@ class NamesCalculatorTest {
         assertThat(actualResult).isEqualTo(1);
     }
 
+
+    @Test
+    public void count_nameInNames()
+    {
+        Integer actualResult = calculator.calculate("Mary");
+        System.out.println(actualResult);
+    }
+
 }
