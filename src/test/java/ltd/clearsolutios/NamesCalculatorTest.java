@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class NamesCalculatorTest {
 
-    NamesCalculator calculator = new NamesCalculator().setNames(List.of("Mary","John", "Jennifer", "Michael","Mary"));
+    NamesCalculator calculator = new NamesCalculatorCounter().setNames(List.of("Mary","John", "Jennifer", "Michael","Mary"));
 
     @Test
     public void calculate_ifNameIsEmpty_return0() {

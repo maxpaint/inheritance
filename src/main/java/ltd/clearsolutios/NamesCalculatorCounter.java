@@ -1,22 +1,24 @@
 package ltd.clearsolutios;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static java.util.Objects.isNull;
 
 public class NamesCalculatorCounter extends NamesCalculator{
 
-    private List<String> names;
-    private int count = 0;
-
-    public int getCount() {
-        return count;
-    }
+    private static Map<String, Integer> names;
 
     @Override
-    public NamesCalculator setNames(List<String> names) {
-        this.names = names;
+    public NamesCalculator setNames(List<String> names)
+    {
+        Map<String, Integer> mapNames = new HashMap<String, Integer>();
+        for (String name : names)
+        {
+            Integer count = mapNames.get(name);
+            mapNames.put(name, (count == null) ? 1 : count + 1);
+        }
+
+        this.names = mapNames;
         return this;
     }
 
@@ -29,8 +31,6 @@ public class NamesCalculatorCounter extends NamesCalculator{
             return 0;
         }
 
-        count = Collections.frequency(names, name);
-
-        return count;
+        return names.get(name);
     }
 }
