@@ -11,11 +11,16 @@ public class NamesCalculatorCounter extends NamesCalculator{
     @Override
     public NamesCalculator setNames(List<String> names)
     {
-        Map<String, Integer> mapNames = new HashMap<String, Integer>();
+        Map<String, Integer> mapNames = new HashMap<>();
+
         for (String name : names)
         {
             Integer count = mapNames.get(name);
-            mapNames.put(name, (count == null) ? 1 : count + 1);
+
+            if(count == null)
+                mapNames.put(name, 1);
+            else
+                mapNames.put(name, count+1);
         }
 
         this.names = mapNames;
@@ -31,6 +36,9 @@ public class NamesCalculatorCounter extends NamesCalculator{
             return 0;
         }
 
-        return names.get(name);
+        if(names.containsKey(name))
+            return names.get(name);
+        else
+            return 0;
     }
 }
